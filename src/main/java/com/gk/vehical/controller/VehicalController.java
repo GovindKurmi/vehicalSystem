@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.gk.vehical.model.Model;
 import com.gk.vehical.model.Vehical;
 import com.gk.vehical.model.Vender;
 import com.gk.vehical.service.VehicalService;
@@ -42,6 +43,14 @@ public class VehicalController {
 	@PostMapping("vender")
 	public List<Vender> saveVender(@RequestBody List<Vender> vender) {
 		return vehicalService.saveVender(vender);
+	}
+	@GetMapping("/getmodel/{vendortype}/{vehicaltype}")
+	public List<String> getModel(@PathVariable String vendortype,@PathVariable String vehicaltype) {
+		return vehicalService.getModel(vendortype,vehicaltype);
+	}
+	@PostMapping("model")
+	public List<Model> saveModel(@RequestBody List<Model> model) {
+		return vehicalService.saveModel(model);
 	}
 	@DeleteMapping("deletedata")
 	public void removeRecord(@PathVariable int id) {
